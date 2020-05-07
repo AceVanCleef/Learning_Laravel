@@ -17,24 +17,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//return another view (see resources/views/*)
+
+//Return another view (see resources/views/*)
 Route::get('/welcome', function () {
     return view('welcome');
 });
+
 
 //Return a string
 Route::get('/astring', function () {
     return "a string :-)";
 });
 
-//Return a JSON -> ideal for when building APIs
 
+//Return a JSON -> ideal for when building APIs
 Route::get('/json', function () {
     return ['foo' => 'bar'];
 });
 
 
-//with a new view:
+//With a new view
 Route::get('test', function () {    //Note: 1st param can be '/test' or 'test'. Both work.
     return view('test');
 });
