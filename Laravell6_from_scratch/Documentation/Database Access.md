@@ -180,6 +180,53 @@ Listing all flags (options):
 `php artisan help make:model`
 
 
+### Repetition: File Locations
+- Migrations are at **database/migrations/...**
+- Controllers are at **app/Http/Controllers/...**
+- Models are at **app/..**
+
+
+
+## Business Logic
+
+### php artisan tinker
+
+--> a laravel & PHP playground you can experiment with everything laravel has to offer. Use it! You can execute commands, functions, calculations, etc in the command line.
+
+__Sode note:__
+Check commands / steps used in tinker to reproduce:
+https://laracasts.com/series/laravel-6-from-scratch/episodes/13?autoplay=true
+
+
+### Creating a DB default value in the migrations
+
+```
+public function up()
+{
+    Schema::create('assignments', function (Blueprint $table) {
+    	...
+        $table->boolean('completed')->default('false'); 
+        ...
+    });
+}
+```
+
+### Changing / Setting value of a Model in DB
+Similar to an object
+
+```
+class Assignment extends Model
+{
+    public function complete()
+    {
+        //update "completed" field in DB:
+        $this->completed = true;
+        $this->save();	//stores permanently to DB.
+    }
+}
+```
+
+
 # Appendix
 
 ## SQL
