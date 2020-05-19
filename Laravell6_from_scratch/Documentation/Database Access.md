@@ -274,3 +274,17 @@ Source: [Class 'App\Http\Controllers\DB' not found and I also cannot use a new M
 
 TBD: Find out what the reason is.
 Resolved by: Distributing the two variables into separate files.
+
+
+### PDO (and any other) extension not loading
+1. Setup global path for PHP to `C:\MAMP\bin\php\php7.3.7`
+2. In php.ini, uncomment `;extension_dir="ext"`
+3. In php.ini, uncomment your extension of choise. E.g. `;extension=pdo_mysql`
+
+Uncommenting means removing the **;** character.
+
+
+### timespams()->nullable() throws error
+Remove the s in timestamp**s**(), then it will work.
+
+`$table->timestamp('due_date')->nullable();`

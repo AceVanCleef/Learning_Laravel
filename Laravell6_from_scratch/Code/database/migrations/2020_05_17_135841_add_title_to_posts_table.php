@@ -14,7 +14,7 @@ class AddTitleToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('title');    //create change
+            //$table->string('title');    //create change
         });
     }
 
@@ -26,7 +26,7 @@ class AddTitleToPostsTable extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn(('title'));  //reverse change
+            //$table->dropColumn(('title'));  //reverse change
         });
     }
 }
