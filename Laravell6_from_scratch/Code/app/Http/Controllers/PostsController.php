@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+//Eloquent Models
+use App\Post;
+
 // 3. Create controller...
 class PostsController
 {
@@ -22,6 +25,36 @@ class PostsController
         //Return to view, which echoes the blog post.
         return view('post', [
             'post' => $posts[$post] //fetching a post from the DB / Array
+        ]);
+    }
+
+
+    public function showFromDB($slug)
+    {
+        $postFromDB = \DB::table('posts')->where('slug', $slug)->first();
+
+        //DD = Dump and Die -> to inspect a variable.
+        //dd($postFromDB);
+
+        //If post doesn't exist in DB
+        if (! $postFromDB) {
+            abort(404);
+        }
+
+        return view('postsFromDB', [
+            'postFromDB' => $postFromDB
+        ]);
+    }
+
+
+    // Eloquent Models
+    public function showUsingEloquentModels($slug)
+    {
+        //Querying from DB via Eloquent Model.
+        $post = Post::where('slug', $slug)->firstOrFail(); //replaces an abort(404);
+
+        return view('postsEloquent', [
+            'post' => $post
         ]);
     }
 }

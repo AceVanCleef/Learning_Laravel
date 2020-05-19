@@ -2,7 +2,7 @@
 
 ## Basic Routing and Views
 
-**Routing**: www.yourdomain.com/**customview**
+**Routing**: www.yourdomain.com/<customview>
 
 When a user types yourdomain.com/shop, you can define in **routes/web.php** what html view will be loaded.
 
@@ -55,7 +55,7 @@ Route::get('test', function () {    //Note: 1st param can be '/test' or 'test'. 
 
 ## Pass Request Data to View
 
-- You can fetch request parameters from urls such as http://localhost:8080/request?**name=jeff**.
+- You can fetch request parameters from urls such as http://localhost:8080/request?name=jeff.
 - You can fetch data from formed data (JSON)
 
 ```

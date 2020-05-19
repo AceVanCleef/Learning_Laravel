@@ -88,3 +88,12 @@ Route::get('/posts/{post}', function ($post) {
 // 1. Define the Wildcard: {post}, which can be anything (a string, numbers, my-new-post, etc).
 // 2. Define the Controller as parameter, including a function with which it should reacte, i.e. show.
 Route::get('/postsViaController/{post}', 'PostsController@show');
+
+
+
+// ****************** Database Access ****************
+Route::get('/postsFromDB/{slug}', 'PostsController@showFromDB');
+
+
+// ****************** Database Access: W/ Elqoeunt Models ****************
+Route::get('/postsEloquent/{slug}', 'PostsController@showUsingEloquentModels');
