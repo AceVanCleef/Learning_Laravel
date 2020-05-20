@@ -97,3 +97,15 @@ Route::get('/postsFromDB/{slug}', 'PostsController@showFromDB');
 
 // ****************** Database Access: W/ Elqoeunt Models ****************
 Route::get('/postsEloquent/{slug}', 'PostsController@showUsingEloquentModels');
+
+
+/********************* Layout Pages ******************* */
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+
+/********************* Integrate a Site Template ******************* */
+Route::get('/usingTemplate/', function () {
+    return view('usingTemplate/welcome');
+});

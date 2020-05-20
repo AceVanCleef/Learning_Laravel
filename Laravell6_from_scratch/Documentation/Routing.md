@@ -171,3 +171,19 @@ class PostsController
 }
 
 ```
+
+
+
+## Extra Learnings
+
+### Oragnizing and routing to views in view/yoursubfolder
+
+It is possible to store views in subfolders of /view. E.g. view/**usingTemplate/**yourview.blade.php.
+
+web.php: For routing, include the folder name in the path declaration to the view.
+
+```
+Route::get('/usingTemplate/', function () {
+    return view('usingTemplate/welcome');   //include the folder name
+});
+```
