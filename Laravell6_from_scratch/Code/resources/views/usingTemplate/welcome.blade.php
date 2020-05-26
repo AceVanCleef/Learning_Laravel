@@ -4,15 +4,17 @@
 <div id="header-wrapper">
 	<div id="header" class="container">
 		<div id="logo">
-			<h1><a href="#">SimpleWork</a></h1>
+			<h1><a href="/">SimpleWork</a></h1>
 		</div>
 		<div id="menu">
-			<ul>
-				<li class="current_page_item"><a href="#" accesskey="1" title="">Homepage</a></li>
-				<li><a href="#" accesskey="2" title="">Our Clients</a></li>
-				<li><a href="#" accesskey="3" title="">About Us</a></li>
-				<li><a href="#" accesskey="4" title="">Careers</a></li>
-				<li><a href="#" accesskey="5" title="">Contact Us</a></li>
+			<ul>	<!-- li class="current_page_item -->
+				<!-- Set an Active Menu Link -->
+				<li class="{{Request::path() === '/usingTemplate' ? 'current_page_item' : ''}}"><a href="/usingTemplate" accesskey="1" title="">Homepage</a></li>
+				<li><a {{Request::path() === '/usingTemplate/clients' ? 'current_page_item' : ''}} href="#" accesskey="2" title="">Our Clients</a></li>
+				<!-- dynamic class setting via regex -->
+				<li><a {{Request::is('about') ? 'current_page_item' : ''}} href="/usingTemplate/about" accesskey="3" title="">About Us</a></li>
+				<li><a {{Request::path() === '/usingTemplate/carrers' ? 'current_page_item' : ''}} href="#" accesskey="4" title="">Careers</a></li>
+				<li><a {{Request::path() === '/usingTemplate/contact' ? 'current_page_item' : ''}}href="#" accesskey="5" title="">Contact Us</a></li>
 			</ul>
 		</div>
 	</div>

@@ -118,3 +118,19 @@ The usingTemplate/welcome.blade.php
 
 ## Set an Active Menu Link
 
+To dynamically mark a navigation item as 'active', you can use:
+
+- `<li class="{{Request::path() === '/' ? 'current_page_item' : ''}}">...`
+- A regex: `<li><a {{Request::is('about') ? 'current_page_item' : ''}}...`
+
+Navigation menu Code:
+```
+	<ul>
+		<!-- Set an Active Menu Link -->
+		<li class="{{Request::path() === '/usingTemplate' ? 'current_page_item' : ''}}"><a href="/usingTemplate" accesskey="1" title="">Homepage</a></li>
+		<li>...</li>
+		<!-- dynamic class setting via regex -->
+		<li><a {{Request::is('about') ? 'current_page_item' : ''}} href="/usingTemplate/about" accesskey="3" title="">About Us</a></li>
+		<li>...</li>
+	</ul>
+```
