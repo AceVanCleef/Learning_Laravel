@@ -134,3 +134,109 @@ Navigation menu Code:
 		<li>...</li>
 	</ul>
 ```
+
+
+## Asset Compilation with Laravel Mix and webpack
+
+There are two locations to put CSS and JS code:
+1. public/css and public/js: For native JS, CSS
+2. resources/css and resources/js: For when you have a built process using webpack, Sass, etc.
+
+Files from (2) are going to be compiled down to (1). (1) will be served to the browser.
+
+### Defining the Webpack Build Process
+
+**webpack.mix.js**: Defines what built steps webpack will execute.
+
+### Dependencies
+
+**package.json": defines what dependencies will be installed once you execute the following terminal command: `npm install`.
+
+### Automatically rebuilt dev-dependencies
+
+...using `npm run watch`, which will keep an eye on your files. When they change, it compiles the code down. Otherwise, to manually compile, use `npm run dev`
+
+### Summary: Your general workflow for new projects
+
+1. npm install
+2. Configure webpack in webpack.mix.js
+
+Tip: Research laravel mix.
+
+
+
+## Render Dynamic Data
+
+1. Create a model: `php artisan make:model Article -m`
+2. Create a migration: `php artisan migrate`
+2. Define migration in **.._create_articles_table.php**
+
+```
+public function up()
+{
+	Schema::create('articles', function (Blueprint $table) {
+		$table->id();
+		$table->string('title');
+		$table->text('exert');
+		$table->text('body');
+		$table->timestamps();
+	});
+}
+```
+
+4. Create article entries and store them into DB
+
+Either by manually creating entries in PhpMySql or using `php artisan tinker`.
+
+```
+//using php artisan tinker
+$article = new App\Article;
+
+$article->title = 'Getting to know us'
+
+$article->excert = 'Lorem ipsum excerpt...'
+
+$article->body = 'Lorem ipsum dolor sit amet, eam at meis tamquam senserit, te duo enim nominati. Commodo vivendo ei eos. Cu tale elit zril vim. Eu singulis indoctum pri, sit in aperiri lucilius theophrastus. No vix solum inermis, vix laudem laoreet impedit no.'
+
+
+then check: $article
+
+persist object in DB:
+$article->save();
+```
+
+5. Dynamically echoing articles into the **about.html** using blade:
+
+```
+<ul class="style1">
+	@foreach ($articles as $article)
+	<li>
+		<h3>{{ $article->title }}</h3>
+		<p><a href="#">{{ $article->exert }}</a></p>
+	</li>
+	@endforeach
+</ul>
+```
+
+
+
+# Issues Fixed
+
+## Resources (CSS, JS, Images) not found [Get 404]
+
+Use this to add assets like css, javascript, images.. into blade file.
+
+### For CSS
+`<link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" >`
+or
+`<link href="{{ URL::asset('css/app.css') }}" rel="stylesheet" type="text/css" >`
+
+### For JS
+`<script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>`
+or
+`<script type="text/javascript" src="{{ URL::asset('js/custom.js') }}"></script>`
+
+### For Images
+`{{ asset('img/photo.jpg') }}`
+
+Here is the [Doc](http://laravel.com/docs/4.2/helpers#urls)

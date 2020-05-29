@@ -1,7 +1,6 @@
 @extends ('usingTemplate/layout')
 
 
-
 @section ('templateContent')
 <div id="wrapper">
 	<div id="page" class="container">
@@ -16,7 +15,16 @@
 		</div>
 		<div id="sidebar">
 			<ul class="style1">
-				<li class="first">
+				@foreach ($articles as $article)
+				<li>
+					<h3>{{ $article->title }}</h3>
+					<p><a href="#">{{ $article->exert }}</a></p>
+				</li>
+				@endforeach
+
+
+				<!--,manually created articles:
+					<li class="first">
 					<h3>Amet sed volutpat mauris</h3>
 					<p><a href="#">In posuere eleifend odio. Quisque semper augue mattis wisi. Pellentesque viverra vulputate enim. Aliquam erat volutpat.</a></p>
 				</li>
@@ -27,7 +35,7 @@
 				<li>
 					<h3>Maecenas ac quam risus</h3>
 					<p><a href="#">In posuere eleifend odio. Quisque semper augue mattis wisi. Pellentesque viverra vulputate enim. Aliquam erat volutpat.</a></p>
-				</li>
+				</li>-->
 			</ul>
 			<div id="stwo-col">
 				<div class="sbox1">

@@ -109,3 +109,12 @@ Route::get('/contact', function () {
 Route::get('/usingTemplate/', function () {
     return view('usingTemplate/welcome');
 });
+
+//Adding routing for sub pages
+Route::get('/usingTemplate/about', function () {
+    return view('usingTemplate/about', [
+        //fetching articles
+        'articles' => App\Article::take(3)->latest()->get()     //get most three recent articles
+            //or ::take(1)->get() Or ::paginate(2)  Or ::all()
+    ]);
+});
