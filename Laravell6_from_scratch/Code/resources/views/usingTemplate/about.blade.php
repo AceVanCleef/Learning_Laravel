@@ -17,8 +17,8 @@
 			<ul class="style1">
 				@foreach ($articles as $article)
 				<li>
-					<h3>{{ $article->title }}</h3>
-					<p><a href="#">{{ $article->exert }}</a></p>
+					<h3><a href="/usingTemplate/articles/{{ $article->id}}">{{ $article->title }}</a></h3>
+					<p>{{ $article->exert }}</p>
 				</li>
 				@endforeach
 

@@ -219,6 +219,55 @@ $article->save();
 ```
 
 
+## Render Dynamic Data: Part 2
+
+
+Files involved:
+- ArticlesController.php
+- Articles.php (Model)
+- about.blade.php
+- articles/show.blade.php
+- web.php
+
+### Creating a controller and a routing
+
+php artisan make:controller ArticlesController
+
+class ArticlesController extends Controller
+{
+    public function show($id)
+    {
+        return view('/usingTemplate/articles/show', ['article' => Article::find($id)]);
+    }
+}
+
+Routing:
+`Route::get('/usingTemplate/articles/{article}', 'ArticlesController@show');`
+
+Note: **{article}** represents a wildcard.
+
+
+
+### Ways to reference to external scripts and css files
+...to maintain reference to our styling, images and interactivity.
+
+1. Replace relative reference with an explicit one: `/css/default.css`, an explicit reference starting from the root folder by using `/` at the beginning.
+
+2. laravel helper function to link to any asset: `href="{{ asset(path) }}"`or `href="{{ URL::asset('css/fonts.css') }}"`
+
+
+Side note: Even the path of an image can be stored in a DB.
+
+
+
+### Homework: Create Articles - page
+1. Go to layout page and update href="#" target path.
+2. Add new route
+3. Define what controller and action to load
+4. What should our page do in our action? E.g. Fetch all articles
+5. Display fechted articles in a view.
+
+
 
 # Issues Fixed
 

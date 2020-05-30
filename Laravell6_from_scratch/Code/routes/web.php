@@ -118,3 +118,9 @@ Route::get('/usingTemplate/about', function () {
             //or ::take(1)->get() Or ::paginate(2)  Or ::all()
     ]);
 });
+
+
+
+/********************* Render Dynamic Data: Part 2 ******************* */
+
+Route::get('/usingTemplate/articles/{article}', 'ArticlesController@show');
