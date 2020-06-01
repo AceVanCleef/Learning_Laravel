@@ -124,3 +124,7 @@ Route::get('/usingTemplate/about', function () {
 /********************* Render Dynamic Data: Part 2 ******************* */
 
 Route::get('/usingTemplate/articles/{article}', 'ArticlesController@show');
+
+
+/********************* 'View' - Homework ******************* */
+Route::get('usingTemplate/articles', 'ArticlesController@index');

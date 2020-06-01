@@ -262,10 +262,48 @@ Side note: Even the path of an image can be stored in a DB.
 
 ### Homework: Create Articles - page
 1. Go to layout page and update href="#" target path.
-2. Add new route
-3. Define what controller and action to load
-4. What should our page do in our action? E.g. Fetch all articles
-5. Display fechted articles in a view.
+
+`<a href="/usingTemplate/articles">`
+
+2. Add new route and define what controller and action to load
+
+` Route::get('usingTemplate/articles', 'ArticlesController@index'); `
+
+3. What should our page do in our action? E.g. Fetch all articles
+
+
+```
+class ArticlesController extends Controller
+{
+    public function show($id)
+    {
+        return view('/usingTemplate/articles/show', ['article' => Article::find($id)]);
+    }
+
+    //returns the view displaying all blog articles
+    public function index()
+    {
+        return view('/usingTemplate/articles/index', ['articles' => Article::all()]);
+    }
+}
+```
+
+4. Display fechted articles in a view.
+
+**usingTemplate/articles/index.blade.php**
+```
+<div id="content">
+            
+            <p>test</p>
+            @foreach ($articles as $article)
+            <div class="title">
+				<h2>{{$article->title}}</h2>            
+                <p>{{ $article->body }}</p>
+        
+            </div>
+            @endforeach
+		</div>
+```
 
 
 

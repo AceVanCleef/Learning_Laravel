@@ -11,4 +11,10 @@ class ArticlesController extends Controller
     {
         return view('/usingTemplate/articles/show', ['article' => Article::find($id)]);
     }
+
+    //returns the view displaying all blog articles
+    public function index()
+    {
+        return view('/usingTemplate/articles/index', ['articles' => Article::all()]);
+    }
 }

@@ -38,7 +38,7 @@ Released   : 20140225
                     <li class="{{Request::path() === '/usingTemplate/clients' ? 'current_page_item' : ''}}"><a href="#" accesskey="2" title="">Our Clients</a></li>
                     <!-- dynamic class setting via regex -->
                     <li class="{{Request::is('about') ? 'current_page_item' : ''}}"><a href="/usingTemplate/about" accesskey="3" title="">About Us</a></li>
-                    <li class="{{Request::path() === '/usingTemplate/articles' ? 'current_page_item' : ''}}"><a href="#" accesskey="4" title="">Articles</a></li>
+                    <li class="{{Request::path() === '/usingTemplate/articles' ? 'current_page_item' : ''}}"><a href="/usingTemplate/articles" accesskey="4" title="">Articles</a></li>
                     <li class="{{Request::path() === '/usingTemplate/contact' ? 'current_page_item' : ''}}"> <a href="#" accesskey="5" title="">Contact Us</a></li>
                 </ul>
             </div>
