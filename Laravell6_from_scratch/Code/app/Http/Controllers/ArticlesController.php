@@ -17,4 +17,28 @@ class ArticlesController extends Controller
     {
         return view('/usingTemplate/articles/index', ['articles' => Article::all()]);
     }
+    
+    public function create()
+    {
+        return view('/usingTemplate/articles/create');
+    }
+
+    public function store()
+    {
+        //validation
+
+
+        //die("Posted :)");
+        //persist the new article
+
+        //..the long way
+        $article = new Article();
+        $article->title = request('title');
+        $article->excert = request('excert');
+        $article->body = request('body');
+
+        $article->save(); //persists to DB
+
+        return redirect('/usingTemplate/articles'); //redirects to given view.
+    }
 }

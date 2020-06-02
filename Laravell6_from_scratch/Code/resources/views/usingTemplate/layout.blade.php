@@ -22,7 +22,7 @@ Released   : 20140225
 <!-- or: <link href='/css/default.css' rel='stylesheet' /> to base the refrence to the root folder -->
 
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
-
+<link rel="stylesheet" href="https://www.jsdelivr.com/package/npm/bulma" />
 </head>
 <body>
     <!-- header -->

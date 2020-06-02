@@ -120,6 +120,13 @@ Route::get('/usingTemplate/about', function () {
 });
 
 
+/********************* Form Handling ******************* */
+//Create new resource (POST)
+Route::post('/usingTemplate/articles', 'ArticlesController@store');
+
+//Create page
+Route::get('/usingTemplate/articles/create', 'ArticlesController@create');
+
 
 /********************* Render Dynamic Data: Part 2 ******************* */
 
