@@ -1,20 +1,20 @@
 @extends ('/usingTemplate/layout')
 
 @section ('templateContent')
-    <div id="wrapper">
+<div id="wrapper">
         <div id="page" class="container">
-            <h1 class=""heading has-text-weight-bold is-size-4>New Article</h1>
+            <h1 class=""heading has-text-weight-bold is-size-4>Update Article</h1>
 
-            <form method="Post" action="/usingTemplate/articles/{{$article->id}}">
+            <form method="POST" action="/usingTemplate/articles/{{$article->id}}">
             @csrf   <!--//CORS: protects against fake requests from foreign users (from other sites).-->
             @method ('PUT') <!-- Laravel based helper function to create a PUT request 
                                  since browser only understands GET and POST-->
-
+                                 
                 <div class="field">
                     <label class="label" for="title">Title</label>
 
                     <div class="control">
-                        <input class="input" type="text" name="title" id="title" />
+                        <input class="input" type="text" name="title" id="title" value="{{ $article->title }}" />
                     </div>
                 </div>
 
@@ -22,7 +22,7 @@
                     <label class="label" for="excerpt">Excerpt</label>
 
                     <div class="control">
-                        <textarea class="textarea" name="excerpt" id="excerpt"></textarea>
+                        <textarea class="textarea" name="excerpt" id="excerpt">{{$article->exert}}</textarea>
                     </div>
                 </div>
 
@@ -30,7 +30,7 @@
                     <label class="label" for="body">Body</label>
 
                     <div class="control">
-                        <textarea class="textarea" name="body" id="body"></textarea>
+                        <textarea class="textarea" name="body" id="body">{{$article->body}}</textarea>
                     </div>
                 </div>
 
@@ -42,4 +42,4 @@
             </form>
         </div>
     </div>
-@endsection
+@section

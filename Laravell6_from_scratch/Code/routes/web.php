@@ -121,7 +121,7 @@ Route::get('/usingTemplate/about', function () {
 
 
 /********************* Form Handling ******************* */
-//Create new resource (POST)
+//Create new resource (POST) -> user hits "submit"
 Route::post('/usingTemplate/articles', 'ArticlesController@store');
 
 //Create page
@@ -135,3 +135,6 @@ Route::get('/usingTemplate/articles/{article}', 'ArticlesController@show');
 
 /********************* 'View' - Homework ******************* */
 Route::get('usingTemplate/articles', 'ArticlesController@index');
+
+
+Route::get('usingTemplate/articles/{article}/edit}', 'ArticlesController@edit');

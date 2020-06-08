@@ -41,4 +41,27 @@ class ArticlesController extends Controller
 
         return redirect('/usingTemplate/articles'); //redirects to given view.
     }
+
+    public function edit($id)
+    {
+        die("edited?");
+        $article = Article::find($id);
+        return view('/usingTemplate/articles/edit', ['article' => $article]);
+    }
+
+
+    public function update($id)
+    {
+        $article = Article::find($id);
+
+        //..the long way
+        $article = new Article();
+        $article->title = request('title');
+        $article->excert = request('excert');
+        $article->body = request('body');
+
+        $article->save(); //persists to DB
+
+        return redirect('/usingTemplate/articles/' . $article->id); //redirects to given view.
+    }
 }

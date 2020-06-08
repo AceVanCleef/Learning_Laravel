@@ -43,10 +43,12 @@ Delete (DELETE)
 Note: Everything has to be a noun in the url structure
 E.g. subscriptions: Post video/subscription or Post /subscription
 
+Note: Checkout OpenApi and Swagger.
+
 
 ## Form Handling
 
-Note: The order in which routes are listed in web.php matters. Precedence is from top to bottom.
+Note: The **order** in which **routes are listed** in web.php **matters**. Precedence is from top to bottom.
 
 ### Creating a new article:
 
@@ -95,6 +97,62 @@ Route::get('/usingTemplate/articles/create', 'ArticlesController@create');
     }
 ```
 
+
+
+## Forms That Submit PUT Requests (Edit/Update an article)
+
+URL Route: /usingTemplate/articles/{articleID}/edit
+
+`Route::get('/usingTemplate/articles/{article}/edit}', 'ArticlesController@edit');`
+
+Note: Somehow this still displays a "404 | Not Found" Error. TBD: Find out why and how to resolve this.
+
+
+Steps:
+1. Call data in edit.php.blade
+`<textarea class="textarea" name="body" id="body">{{$article->body}}</textarea>`
+
+2. Tag form as PUT request (the laravel way)
+```
+<form method="POST" action="/usingTemplate/articles/{{$article->id}}">
+            @csrf   <!--//CORS: protects against fake requests from foreign users (from other sites).-->
+            @method ('PUT') <!-- Laravel based helper function to create a PUT request 
+                                 since browser only understands GET and POST-->
+
+```
+
+Note:
+- form method="POST", since the browser only understands GET and POST
+- use @method ('PUT'). Laravel will transform that into a POST that emulates a PUT.
+
+
+3. Update **ArticlesController.php**
+
+```
+ public function edit($id)
+    {
+        die("edited?");
+        $article = Article::find($id);
+        return view('/usingTemplate/articles/edit', ['article' => $article]);
+    }
+
+
+    public function update($id)
+    {
+        $article = Article::find($id);
+
+        //..the long way
+        $article = new Article();
+        $article->title = request('title');
+        $article->excert = request('excert');
+        $article->body = request('body');
+
+        $article->save(); //persists to DB
+
+        return redirect('/usingTemplate/articles/' . $article->id); //redirects to given view.
+    }
+
+```
 
 # Fixes and Troubleshoots
 
